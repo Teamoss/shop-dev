@@ -8,7 +8,7 @@
                         <h4 class="news-list">{{item.title}}</h4>
                         <p class='mui-ellipsis'>
                             <span>发表时间：{{item.add_time | dateFormat}}</span>
-                            <span>点击次数:{{item.click}}</span>
+                            <span>点击次数::{{item.click}}</span>
                         </p>
                     </div>
                 </router-link>
