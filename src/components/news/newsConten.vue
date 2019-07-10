@@ -4,7 +4,7 @@
             <h3>{{newConten.title}}</h3>
             <p class="newT">
                 <span>发表时间:{{newConten.add_time | dateFormat}}</span>
-                <span>点击:{{newConten.click}}次</span>
+                <span>点击{{newConten.click}}次</span>
             </p>
         </div>
         <hr>
