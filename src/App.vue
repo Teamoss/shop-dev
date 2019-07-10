@@ -40,6 +40,7 @@
         padding-bottom: 50px;
         overflow: hidden;
     }
+    /*页面切换动画*/
     .mint-header {
         background-color: lightseagreen;
     }
