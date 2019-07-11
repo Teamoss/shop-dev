@@ -52,6 +52,7 @@
         },
         methods: {
             getLunbotu() {
+                // 获取首页轮播图
                 this.$http.get("api/getlunbo").then(res => {
                     if (res.body.status === 0) {
                         this.imgList = res.body.message;

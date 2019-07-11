@@ -10,15 +10,15 @@ Vue.use(VueRouter);
 import app from './App.vue'
 
 //按需要导入Mint-UI组件
-import {Header, Swipe, SwipeItem} from 'mint-ui';
-
+import {Header, Swipe, SwipeItem, Button} from 'mint-ui';
+Vue.component(Button.name, Button);
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 
 
 //导入MUI样式
-import './lib/css/mui.css'
+import './lib/css/mui.css';
 //拓展MUI图标样式
 import './lib/css/icons-extra.css'
 
@@ -29,7 +29,7 @@ import router from './router.js'
 //导入vue-resource
 import VueResource from 'vue-resource'
 
-Vue.use(VueResource)
+Vue.use(VueResource);
 Vue.http.options.root = 'http://www.liulongbin.top:3005';
 
 //导入时间格式化插件
@@ -37,12 +37,12 @@ import moment from 'moment'
 
 Vue.filter('dateFormat', function (datastr, patterm = "YYYY-MM-DD") {
     return moment(datastr).format(patterm)
-})
+});
 
 var vm = new Vue({
     el: '#app',
     data: {},
     render: c => c(app),
     router
-})
+});
 

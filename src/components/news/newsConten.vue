@@ -8,11 +8,16 @@
             </p>
         </div>
         <hr>
+        <!--新闻内容-->
         <div class="newMess" v-html="newConten.content"></div>
+        <!--评论区域-->
+        <comment-box :id="id"></comment-box>
     </div>
 </template>
 <script>
-    import {Toast} from 'mint-ui'
+    import {Toast} from 'mint-ui';
+    import comment from '../subcomponent/comment.vue'
+
 
     export default {
         data() {
@@ -26,16 +31,19 @@
         },
         methods: {
             getnewsConten() {
+                // 获取新闻详细内容
                 this.$http.get('api/getnew/' + this.id).then(res => {
                     if (res.body.status === 0) {
                         this.newConten = res.body.message[0]
                     } else {
-                        console.log(111)
                         Toast('获取新闻失败')
 
                     }
                 })
             }
+        },
+        components:{
+          "comment-box":comment
         }
     }
 
