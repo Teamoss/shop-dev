@@ -28,10 +28,11 @@ import router from './router.js'
 
 //导入vue-resource
 import VueResource from 'vue-resource'
-
 Vue.use(VueResource);
+// 配置跟地址
 Vue.http.options.root = 'http://www.liulongbin.top:3005';
-
+// 配置表单提交格式 application/x-www-form-urlencoded
+Vue.http.options.emulateJSON=true;
 //导入时间格式化插件
 import moment from 'moment'
 
