@@ -42,8 +42,8 @@
                 })
             }
         },
-        components:{
-          "comment-box":comment
+        components: {
+            "comment-box": comment
         }
     }
 
