@@ -1,6 +1,5 @@
 ## 移动端购物商城APP
    vue+vue-router+vuex+Mint-UI+MUI实现
-   调用API进行数据渲染
    
 ## 这是一段带有诗意的代码程序
 
