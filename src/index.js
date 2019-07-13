@@ -10,11 +10,16 @@ Vue.use(VueRouter);
 import app from './App.vue'
 
 //按需要导入Mint-UI组件
-import {Header, Swipe, SwipeItem, Button} from 'mint-ui';
-Vue.component(Button.name, Button);
-Vue.component(Header.name, Header);
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
+// import {Header, Swipe, SwipeItem, Button, Lazyload } from 'mint-ui';
+// Vue.component(Button.name, Button);
+// Vue.component(Header.name, Header);
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.use(Lazyload)
+//全部引入MintUI解决懒加载无动画
+import MintUI from 'mint-ui'
+Vue.use(MintUI);
+import 'mint-ui/lib/style.css'
 
 
 //导入MUI样式
@@ -25,6 +30,9 @@ import './lib/css/icons-extra.css'
 //自己本地的router路由模块
 import router from './router.js'
 
+// 导入图片缩略图插件
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview);
 
 //导入vue-resource
 import VueResource from 'vue-resource'

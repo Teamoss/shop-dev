@@ -28,12 +28,12 @@
         },
         methods: {
             getComments() {
-                // 获取新闻详细内容
+                // 获取评论内容
                 this.$http.get('api/getcomments/' + this.id + '?pageindex=' + this.pageindex).then(res => {
                     if (res.body.status === 0) {
                         this.comments = this.comments.concat(res.body.message)
                     } else {
-                        Toast('获取新闻失败')
+                        Toast('获取评论失败')
 
                     }
                 })

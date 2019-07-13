@@ -6,6 +6,8 @@ import shopcar from './components/tabbar/shopcar.vue'
 import newsList from './components/news/newsList.vue'
 import newsConten from './components/news/newsConten.vue'
 import photosList from './components/photosList/photosList.vue'
+import photosMessage from './components/photosList/photsMessage.vue'
+import goodsList from './components/goods/goodsList.vue'
 
 var router = new VueRouter({
     routes: [
@@ -16,7 +18,9 @@ var router = new VueRouter({
         {path: '/search', component: search},
         {path: '/home/newsList', component: newsList},
         {path: '/home/newsConten/:id', component: newsConten},
-        {path:'/home/photosList',component:photosList}
+        {path:'/home/photosList',component:photosList},
+        {path:'/home/photosMessage/:id',component:photosMessage},
+        {path:'/home/goodsList',component:goodsList}
     ],
     linkActiveClass: 'mui-active'
 });
