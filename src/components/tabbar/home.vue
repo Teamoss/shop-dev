@@ -1,11 +1,8 @@
 <template>
     <div>
         <!--轮播图-->
-        <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="item in imgList" :key="item.id">
-                <img :src="item.img" alt="">
-            </mt-swipe-item>
-        </mt-swipe>
+        <swiper :imgList="imgList" :isFull="true"></swiper>
+
         <!--六宫格图标-->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -42,6 +39,7 @@
 </template>
 <script>
     import {Toast} from "mint-ui"
+    import swiper from './../subcomponent/swiper.vue'
 
     export default {
         data() {
@@ -63,18 +61,21 @@
                     }
                 })
             }
+        },
+        components:{
+            swiper
         }
     }
 </script>
 <style scoped>
-    .mint-swipe {
-        height: 200px;
-    }
+    /*.mint-swipe {*/
+        /*height: 200px;*/
+    /*}*/
 
-    img {
-        width: 100%;
-        height: 100%;
-    }
+    /*img {*/
+        /*width: 100%;*/
+        /*height: 100%;*/
+    /*}*/
 
     .mui-grid-view.mui-grid-9 {
         background: white;

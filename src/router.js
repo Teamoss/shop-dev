@@ -8,6 +8,9 @@ import newsConten from './components/news/newsConten.vue'
 import photosList from './components/photosList/photosList.vue'
 import photosMessage from './components/photosList/photsMessage.vue'
 import goodsList from './components/goods/goodsList.vue'
+import goodsInfo from './components/goods/goodsInfo.vue'
+import goodsDesc from './components/goods/goodsDesc.vue'
+import goodsComment from './components/goods/goodsComment.vue'
 
 var router = new VueRouter({
     routes: [
@@ -18,9 +21,12 @@ var router = new VueRouter({
         {path: '/search', component: search},
         {path: '/home/newsList', component: newsList},
         {path: '/home/newsConten/:id', component: newsConten},
-        {path:'/home/photosList',component:photosList},
-        {path:'/home/photosMessage/:id',component:photosMessage},
-        {path:'/home/goodsList',component:goodsList}
+        {path: '/home/photosList', component: photosList},
+        {path: '/home/photosMessage/:id', component: photosMessage},
+        {path: '/home/goodsList', component: goodsList},
+        {path: '/home/goodsInfo/:id', component: goodsInfo, name: 'goodsInfo'},
+        {path: '/home/goodsDesc/:id', component: goodsDesc, name: 'goodsDesc'},
+        {path: '/home/goodsComment/:id', component: goodsComment, name: 'goodsComment'}
     ],
     linkActiveClass: 'mui-active'
 });
