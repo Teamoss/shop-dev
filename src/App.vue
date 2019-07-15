@@ -1,7 +1,11 @@
 <template>
     <div class="app-container">
         <!--顶部header区域-->
-        <mt-header fixed title="淘宝宝"></mt-header>
+        <mt-header fixed title="淘宝宝">
+            <span slot="left" @click="goback">
+                <mt-button icon="back" v-show="flag">返回</mt-button>
+            </span>
+        </mt-header>
 
         <!--中间路由内容区域-->
         <transition>
@@ -34,6 +38,31 @@
     </div>
 </template>
 <script>
+    export default {
+        data() {
+            return {
+                flag: false
+            }
+        },
+        created() {
+            this.flag = this.$route.path === '/home' ? false : true
+        },
+        methods: {
+            goback() {
+                this.$router.go(-1)
+            }
+        },
+        watch: {
+            //监听路由为'/home'时隐藏返回图标
+            '$route.path': function (newVal) {
+                if (newVal === '/home') {
+                    this.flag = false
+                } else {
+                    this.flag = true
+                }
+            }
+        }
+    }
 
 </script>
 <style scoped>
@@ -42,25 +71,31 @@
         padding-bottom: 50px;
         overflow: hidden;
     }
-    .mint-header{
+
+    .mint-header {
         z-index: 99;
     }
+
     /*页面切换动画*/
     .mint-header {
         background-color: lightseagreen;
     }
-    .v-enter{
+
+    .v-enter {
         opacity: 0;
         transform: translateX(100%);
     }
-    .v-leaver-to{
+
+    .v-leaver-to {
         opacity: 0;
         transform: translateX(-100%);
     }
-    .v-enter-active, .v-leaver-active{
+
+    .v-enter-active, .v-leaver-active {
         transition: all 0.8s ease;
     }
-   /*改MUI类名解决tabar无法滑动问题（MUI自身框架问题，可能内部类名重名?）*/
+
+    /*改MUI类名解决tabar无法滑动问题（MUI自身框架问题，可能内部类名重名?）*/
     .mui-bar-tab .mui-tab-item-llb.mui-active {
         color: #007aff;
     }
@@ -85,7 +120,7 @@
         padding-bottom: 0;
     }
 
-    .mui-bar-tab .mui-tab-item-llb .mui-icon~.mui-tab-label {
+    .mui-bar-tab .mui-tab-item-llb .mui-icon ~ .mui-tab-label {
         font-size: 11px;
         display: block;
         overflow: hidden;

@@ -113,6 +113,7 @@
                     price: this.imgInfo.sell_price,
                     selected:true
                 };
+                //商品数据存储到公共管理中
                 this.$store.commit('addToShopCar',goodsObj)
             },
             // 购物车小球动画

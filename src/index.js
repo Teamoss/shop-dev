@@ -64,6 +64,7 @@ var store = new Vuex.Store({
         shopCar: shopCar
     },
     mutations: {
+        //获取添加过来的商品
         addToShopCar(state, goodsInfo) {
             var flag = false;
             state.shopCar.some(item => {
@@ -79,14 +80,34 @@ var store = new Vuex.Store({
             localStorage.setItem('shopCar', JSON.stringify(state.shopCar))
         },
         //更新购物车商品数量
-        updateGoodsCount(state,goodsObj){
-            state.shopCar.some(item=>{
-                if (item.id===goodsObj.id) {
-                    item.count=parseInt(goodsObj.count);
+        updateGoodsCount(state, goodsObj) {
+            state.shopCar.some(item => {
+                if (item.id === goodsObj.id) {
+                    item.count = parseInt(goodsObj.count);
                     return true
                 }
             });
-            localStorage.setItem('shopCar',JSON.stringify(state.shopCar))
+            localStorage.setItem('shopCar', JSON.stringify(state.shopCar))
+        },
+        //删除对应购物车商品数据并同步到本地存储中
+        removeShopCarGoods(state, id) {
+            state.shopCar.forEach((item, index) => {
+                if (item.id === id) {
+                    state.shopCar.splice(index, 1);
+                    return true
+                }
+            });
+            localStorage.setItem('shopCar', JSON.stringify(state.shopCar))
+        },
+        //修改商品状态
+        updateGoodsSelected(state, goods) {
+            state.shopCar.forEach(item => {
+                if (item.id === goods.id) {
+                    item.selected = goods.selected;
+                    return true
+                }
+            });
+            localStorage.setItem('shopCar', JSON.stringify(state.shopCar))
         }
     },
     getters: {
@@ -106,7 +127,29 @@ var store = new Vuex.Store({
             });
             return goodsCount
         },
+        // 获取购物车商品状态
+        getGoodsSelected(state) {
+            var objSelect = {};
+            state.shopCar.forEach(item => {
+                objSelect[item.id] = item.selected
+            });
+            return objSelect
 
+        },
+        // 购物车商品结算
+        allGoodsAccount(state) {
+            var goodsSum = {
+                goodsNum :0,
+                goodsAccount : 0
+            };
+            state.shopCar.forEach(item => {
+                if (item.selected) {
+                    goodsSum.goodsNum+=item.count;
+                    goodsSum.goodsAccount+=item.price*item.count
+                }
+            })
+            return goodsSum
+        }
     }
 
 });
