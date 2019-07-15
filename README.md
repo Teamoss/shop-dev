@@ -1,5 +1,4 @@
 ## 移动端购物商城APP
-   Vue+Vue-router+Vuex+Mint-UI+MUI实现
 
 #制作首页App组件
 
