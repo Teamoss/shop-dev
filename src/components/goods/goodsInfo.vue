@@ -104,9 +104,18 @@
             togoodsComment(id) {
                 this.$router.push({name: 'goodsComment', params: {id}})
             },
+            //添加商品到购物车
             addshopCar(){
-                this.flag=!this.flag
+                this.flag=!this.flag;
+                var goodsObj={
+                    id:this.id,
+                    count: this.selectedCount,
+                    price: this.imgInfo.sell_price,
+                    selected:true
+                };
+                this.$store.commit('addToShopCar',goodsObj)
             },
+            // 购物车小球动画
             beforeEnter(el){
                 el.style.transform="translate(0,0)"
             },
@@ -126,8 +135,7 @@
             },
             //获取子组件中购买商品数量
             getSelCount(data){
-                this.selectedCount=data
-                console.log("子组件传递过来的count为:"+this.selectedCount)
+                this.selectedCount=data;
             }
         },
         components: {
