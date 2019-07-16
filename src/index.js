@@ -69,7 +69,9 @@ var store = new Vuex.Store({
             var flag = false;
             state.shopCar.some(item => {
                 if (item.id === goodsInfo.id) {
-                    item.count += parseInt(goodsInfo.count);
+                    // 这里用item.count+= parseInt(goodsInfo.count)会出现字符串拼接情况
+                    item.count = parseInt(item.count) + parseInt(goodsInfo.count);
+                    // console.log(item.count);
                     flag = true;
                     return true
                 }
@@ -115,7 +117,7 @@ var store = new Vuex.Store({
         getALLCount(state) {
             var sumGoods = 0;
             state.shopCar.forEach(item => {
-                sumGoods += item.count
+                sumGoods += parseInt(item.count)
             });
             return sumGoods
         },
@@ -139,15 +141,15 @@ var store = new Vuex.Store({
         // 购物车商品结算
         allGoodsAccount(state) {
             var goodsSum = {
-                goodsNum :0,
-                goodsAccount : 0
+                goodsNum: 0,
+                goodsAccount: 0
             };
             state.shopCar.forEach(item => {
                 if (item.selected) {
-                    goodsSum.goodsNum+=item.count;
-                    goodsSum.goodsAccount+=item.price*item.count
+                    goodsSum.goodsNum += item.count;
+                    goodsSum.goodsAccount += item.price * item.count
                 }
-            })
+            });
             return goodsSum
         }
     }
